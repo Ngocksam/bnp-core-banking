@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bnp-banking-deployment
+  labels:
+    app: bnp-api
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: bnp-api
+  template:
+    metadata:
+      labels:
+        app: bnp-api
+    spec:
+      containers:
+      - name: banking-api-container
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 3000
