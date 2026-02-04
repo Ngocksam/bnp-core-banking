@@ -1,0 +1,5 @@
+replicaCount: 2
+image:
+  repository: bnp-banking-api
+  tag: v1
+  pullPolicy: Never  # Important : dit à K8s de chercher l'image en local
